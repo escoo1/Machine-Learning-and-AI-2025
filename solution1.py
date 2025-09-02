@@ -19,6 +19,8 @@ class Node():
         self.f = 0
 
     def __eq__(self, other):
+        # We now consider two nodes to be the same if they have the same
+        # position AND direction.
         return self.position == other.position and self.direction == other.direction
     
     def __hash__(self):
@@ -89,7 +91,6 @@ def astar(maze, start, end):
         children = []
         possible_moves = []
         
-        # ** THE KEY CHANGE IS HERE **
         # If the node has no direction, it's the start node.
         # From the start, we can move in ANY valid cardinal direction.
         if current_node.direction is None:
@@ -159,7 +160,6 @@ def main():
     start1 = (11, 10)
     end1 = (11, 2)
     
-    # We no longer need to provide a starting direction.
     path = astar(maze1, start1, end1)
     
     if path:
